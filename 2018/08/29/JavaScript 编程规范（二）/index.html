@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="摘要:    了解并遵守 JavaScript 编程规范。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 编程规范（二）">
+<meta property="og:url" content="http://yoursite.com/2018/08/29/JavaScript%20%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:site_name" content="rory の 秘密基地">
+<meta property="og:description" content="摘要:    了解并遵守 JavaScript 编程规范。">
+<meta property="article:published_time" content="2018-08-29T08:18:25.000Z">
+<meta property="article:modified_time" content="2019-03-29T11:25:07.996Z">
+<meta property="article:author" content="Rory Zeng">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/29/JavaScript 编程规范（二）/"/>
+
+
+
+
+
+  <title>JavaScript 编程规范（二） | rory の 秘密基地</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rory の 秘密基地</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/JavaScript%20%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rory Zeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rory の 秘密基地">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 编程规范（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T16:18:25+08:00">
+                2018-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>摘要:<br>    了解并遵守 JavaScript 编程规范。</p>
+<a id="more"></a>
+
+<h1 id="变量-Variables"><a href="#变量-Variables" class="headerlink" title="变量 Variables"></a>变量 Variables</h1><h2 id="总是使用-const-或-let-来声明变量。-不这样做会导致产生全局变量。-我们希望避免污染全局命名空间。"><a href="#总是使用-const-或-let-来声明变量。-不这样做会导致产生全局变量。-我们希望避免污染全局命名空间。" class="headerlink" title="总是使用 const 或 let 来声明变量。 不这样做会导致产生全局变量。 我们希望避免污染全局命名空间。"></a>总是使用 const 或 let 来声明变量。 不这样做会导致产生全局变量。 我们希望避免污染全局命名空间。</h2><p><code>eslint: no-undef prefer-const</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">superPower &#x3D; new SuperPower()</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const superPower &#x3D; new SuperPower()</span><br></pre></td></tr></table></figure>
+
+<h2 id="将所有的-const-和-let-分组-。"><a href="#将所有的-const-和-let-分组-。" class="headerlink" title="将所有的 const 和 let 分组 。"></a>将所有的 const 和 let 分组 。</h2><p>当你需要把已分配的变量分配给一个变量时非常有用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">let i, len, dragonball,</span><br><span class="line">items &#x3D; getItems(),</span><br><span class="line">goSportsTeam &#x3D; true</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">let i</span><br><span class="line">const items &#x3D; getItems()</span><br><span class="line">let dragonball</span><br><span class="line">const goSportsTeam &#x3D; true</span><br><span class="line">let len</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const goSportsTeam &#x3D; true</span><br><span class="line">const items &#x3D; getItems()</span><br><span class="line">let dragonball</span><br><span class="line">let i</span><br><span class="line">let length</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量不要链式赋值。"><a href="#变量不要链式赋值。" class="headerlink" title="变量不要链式赋值。"></a>变量不要链式赋值。</h2><p><code>eslint: no-multi-assign</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">(function example() &#123;</span><br><span class="line">&#x2F;&#x2F; JavaScript 将其解析为</span><br><span class="line">&#x2F;&#x2F; let a &#x3D; ( b &#x3D; ( c &#x3D; 1 ) )</span><br><span class="line">&#x2F;&#x2F; let关键字只适用于变量a</span><br><span class="line">&#x2F;&#x2F; 变量b和c变成了全局变量。</span><br><span class="line">let a &#x3D; b &#x3D; c &#x3D; 1</span><br><span class="line">&#125;())</span><br><span class="line">console.log(a) &#x2F;&#x2F; 抛出 ReferenceError（引用错误）</span><br><span class="line">console.log(b) &#x2F;&#x2F; 1</span><br><span class="line">console.log(c) &#x2F;&#x2F; 1</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">(function example() &#123;</span><br><span class="line">    let a &#x3D; 1</span><br><span class="line">    let b &#x3D; a</span><br><span class="line">    let c &#x3D; a</span><br><span class="line">&#125;())</span><br><span class="line">console.log(a) &#x2F;&#x2F; 抛出 ReferenceError（引用错误）</span><br><span class="line">console.log(b) &#x2F;&#x2F; 抛出 ReferenceError（引用错误）</span><br><span class="line">console.log(c) &#x2F;&#x2F; 抛出 ReferenceError（引用错误）</span><br><span class="line">&#x2F;&#x2F; 同样适用于 &#96;const&#96;</span><br></pre></td></tr></table></figure>
+
+<h2 id="避免使用一元递增和递减运算符-–-。"><a href="#避免使用一元递增和递减运算符-–-。" class="headerlink" title="避免使用一元递增和递减运算符(++, -–)。"></a>避免使用一元递增和递减运算符(++, -–)。</h2><p>根据 eslint 文档，一元递增和递减语句会受到自动插入分号的影响，并可能导致应用程序中的值递增或递减，从而导致无提示错误。使用像 num += 1 而不是 num++ 或 num ++ 这样的语句来改变你的值也更具有表现力。不允许一元递增和递减语句也会阻止您无意中预先递增/递减值，这也会导致程序中的意外行为。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const array &#x3D; [1, 2, 3]</span><br><span class="line">let num &#x3D; 1</span><br><span class="line">num++</span><br><span class="line">--num</span><br><span class="line">let sum &#x3D; 0</span><br><span class="line">let truthyCount &#x3D; 0</span><br><span class="line">for (let i &#x3D; 0 i &lt; array.length i++) &#123; </span><br><span class="line">  let value &#x3D; array[i] </span><br><span class="line">  sum +&#x3D; value</span><br><span class="line">   if (value) &#123;</span><br><span class="line">      truthyCount++ </span><br><span class="line">    &#125; </span><br><span class="line"> &#125;</span><br><span class="line">&#x2F;&#x2F; good </span><br><span class="line">const array &#x3D; [1, 2, 3] </span><br><span class="line">let num &#x3D; 1 num +&#x3D; 1 num -&#x3D; 1 </span><br><span class="line">const sum &#x3D; array.reduce((a, b) &#x3D;&gt; a + b, 0)</span><br><span class="line">const truthyCount &#x3D; array.filter(Boolean).length</span><br></pre></td></tr></table></figure>
+
+<h1 id="比较运算符-Comparison-Operators-和-等号-Equality"><a href="#比较运算符-Comparison-Operators-和-等号-Equality" class="headerlink" title="比较运算符 Comparison Operators 和 等号 Equality"></a>比较运算符 Comparison Operators 和 等号 Equality</h1><h2 id="使用-和-优先于-和-。"><a href="#使用-和-优先于-和-。" class="headerlink" title="使用 === 和 !== 优先于 == 和 !=。"></a>使用 === 和 !== 优先于 == 和 !=。</h2><p><code>eslint: eqeqeq</code></p>
+<h2 id="对于布尔值使用简写，但对于字符串和数字使用显式比较。"><a href="#对于布尔值使用简写，但对于字符串和数字使用显式比较。" class="headerlink" title="对于布尔值使用简写，但对于字符串和数字使用显式比较。"></a>对于布尔值使用简写，但对于字符串和数字使用显式比较。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (isValid &#x3D;&#x3D;&#x3D; true) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (isValid) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (name) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (name !&#x3D;&#x3D; &#39;&#39;) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (collection.length) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (collection.length &gt; 0) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在-case-和-default-子句中，使用大括号来创建包含词法声明的语句块-例如-let-const-function-和-class"><a href="#在-case-和-default-子句中，使用大括号来创建包含词法声明的语句块-例如-let-const-function-和-class" class="headerlink" title="在 case 和 default 子句中，使用大括号来创建包含词法声明的语句块(例如 let, const, function, 和 class)."></a>在 case 和 default 子句中，使用大括号来创建包含词法声明的语句块(例如 let, const, function, 和 class).</h2><p><code>eslint: no-case-declarations</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">switch (foo) &#123;</span><br><span class="line">  case 1:</span><br><span class="line">    let x &#x3D; 1</span><br><span class="line">  break</span><br><span class="line">  case 2:</span><br><span class="line">    const y &#x3D; 2</span><br><span class="line">  break</span><br><span class="line">  case 3:</span><br><span class="line">    function f() &#123;</span><br><span class="line">      &#x2F;&#x2F; ...</span><br><span class="line">    &#125;</span><br><span class="line">  break</span><br><span class="line">default:</span><br><span class="line">  class C &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">switch (foo) &#123;</span><br><span class="line">  case 1: &#123;</span><br><span class="line">    let x &#x3D; 1</span><br><span class="line">    break</span><br><span class="line">  &#125;</span><br><span class="line">  case 2: &#123;</span><br><span class="line">    const y &#x3D; 2</span><br><span class="line">    break</span><br><span class="line">  &#125;</span><br><span class="line">  case 3: &#123;</span><br><span class="line">    function f() &#123;</span><br><span class="line">      &#x2F;&#x2F; ...</span><br><span class="line">    &#125;</span><br><span class="line">    break</span><br><span class="line">  &#125;</span><br><span class="line">  case 4:</span><br><span class="line">    bar()</span><br><span class="line">    break</span><br><span class="line">  default: &#123;</span><br><span class="line">    class C &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三元表达式不应该嵌套，通常写成单行表达式。"><a href="#三元表达式不应该嵌套，通常写成单行表达式。" class="headerlink" title="三元表达式不应该嵌套，通常写成单行表达式。"></a>三元表达式不应该嵌套，通常写成单行表达式。</h2><p><code>eslint: no-nested-ternary</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const foo &#x3D; maybe1 &gt; maybe2</span><br><span class="line">? &quot;bar&quot;</span><br><span class="line">: value1 &gt; value2 ? &quot;baz&quot; : null</span><br><span class="line">&#x2F;&#x2F; 拆分成2个分离的三元表达式</span><br><span class="line">const maybeNull &#x3D; value1 &gt; value2 ? &#39;baz&#39; : null</span><br><span class="line">&#x2F;&#x2F; better</span><br><span class="line">const foo &#x3D; maybe1 &gt; maybe2</span><br><span class="line">? &#39;bar&#39;</span><br><span class="line">: maybeNull</span><br><span class="line">&#x2F;&#x2F; best</span><br><span class="line">const foo &#x3D; maybe1 &gt; maybe2 ? &#39;bar&#39; : maybeNull</span><br></pre></td></tr></table></figure>
+
+<h2 id="避免不必要的三元表达式语句。"><a href="#避免不必要的三元表达式语句。" class="headerlink" title="避免不必要的三元表达式语句。"></a>避免不必要的三元表达式语句。</h2><p><code>eslint: no-unneeded-ternary</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; bad</span><br><span class="line">const foo &#x3D; a ? a : b</span><br><span class="line">const bar &#x3D; c ? true : false</span><br><span class="line">const baz &#x3D; c ? false : true</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const foo &#x3D; a || b</span><br><span class="line">const bar &#x3D; !!c</span><br><span class="line">const baz &#x3D; !c</span><br></pre></td></tr></table></figure>
+
+<h2 id="当运算符混合在一个语句中时，请将其放在括号内。混合算术运算符时，不要将-和-与-，-，，-混合在一起。"><a href="#当运算符混合在一个语句中时，请将其放在括号内。混合算术运算符时，不要将-和-与-，-，，-混合在一起。" class="headerlink" title="当运算符混合在一个语句中时，请将其放在括号内。混合算术运算符时，不要将 * 和 % 与 + ， -，，/ 混合在一起。"></a>当运算符混合在一个语句中时，请将其放在括号内。混合算术运算符时，不要将 * 和 % 与 + ， -，，/ 混合在一起。</h2><p><code>eslint: no-mixed-operators</code></p>
+<p>这可以提高可读性，并清晰展现开发者的意图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; bad</span><br><span class="line">const foo &#x3D; a &amp;&amp; b &lt; 0 || c &gt; 0 || d + 1 &#x3D;&#x3D;&#x3D; 0</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const bar &#x3D; a ** b - 5 % d</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (a || b &amp;&amp; c) &#123;</span><br><span class="line">return d</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const foo &#x3D; (a &amp;&amp; b &lt; 0) || c &gt; 0 || (d + 1 &#x3D;&#x3D;&#x3D; 0)</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const bar &#x3D; (a ** b) - (5 % d)</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if ((a || b) &amp;&amp; c) &#123;</span><br><span class="line">return d</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const bar &#x3D; a + b &#x2F; c * d</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码块-Blocks"><a href="#代码块-Blocks" class="headerlink" title="代码块 Blocks"></a>代码块 Blocks</h1><h2 id="使用大括号包裹所有的多行代码块"><a href="#使用大括号包裹所有的多行代码块" class="headerlink" title="使用大括号包裹所有的多行代码块"></a>使用大括号包裹所有的多行代码块</h2><p><code>eslint: nonblock-statement-body-position</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (test)</span><br><span class="line">  return false</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (test) return false</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (test) &#123;</span><br><span class="line">  return false</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function foo() &#123; return false &#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function bar() &#123;</span><br><span class="line">  return false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如果通过-if-和-else-使用多行代码块，把-else-放在-if-代码块闭合括号的同一行。"><a href="#如果通过-if-和-else-使用多行代码块，把-else-放在-if-代码块闭合括号的同一行。" class="headerlink" title="如果通过 if 和 else 使用多行代码块，把 else 放在 if 代码块闭合括号的同一行。"></a>如果通过 if 和 else 使用多行代码块，把 else 放在 if 代码块闭合括号的同一行。</h2><p><code>eslint: brace-style</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (test) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">  thing2()</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">  thing3()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (test) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">  thing2()</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  thing3()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如果一个-if-块总是执行一个-return-语句，后面的-else-块是不必要的。在-else-if-块中的-return，可以分成多个-if-块来-return-。"><a href="#如果一个-if-块总是执行一个-return-语句，后面的-else-块是不必要的。在-else-if-块中的-return，可以分成多个-if-块来-return-。" class="headerlink" title="如果一个 if 块总是执行一个 return 语句，后面的 else 块是不必要的。在 else if 块中的 return，可以分成多个 if 块来 return 。"></a>如果一个 if 块总是执行一个 return 语句，后面的 else 块是不必要的。在 else if 块中的 return，可以分成多个 if 块来 return 。</h2><p><code>eslint: no-else-return</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function foo() &#123;</span><br><span class="line">  if (x) &#123;</span><br><span class="line">    return x</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function cats() &#123;</span><br><span class="line">  if (x) &#123;</span><br><span class="line">    return x</span><br><span class="line">  &#125; else if (y) &#123;</span><br><span class="line">    return y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function dogs() &#123;</span><br><span class="line">  if (x) &#123;</span><br><span class="line">    return x</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  if (y) &#123;</span><br><span class="line">    return y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function foo() &#123;</span><br><span class="line">  if (x) &#123;</span><br><span class="line">    return x</span><br><span class="line">  &#125;</span><br><span class="line">return y</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function cats() &#123;</span><br><span class="line">  if (x) &#123;</span><br><span class="line">    return x</span><br><span class="line">  &#125;</span><br><span class="line">  if (y) &#123;</span><br><span class="line">    return y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;good</span><br><span class="line">function dogs(x) &#123;</span><br><span class="line">  if (x) &#123;</span><br><span class="line">    if (z) &#123;</span><br><span class="line">      return y</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  return z</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="控制语句-Control-Statements"><a href="#控制语句-Control-Statements" class="headerlink" title="控制语句 Control Statements"></a>控制语句 Control Statements</h1><h2 id="如果您的控制语句-if-while-的-太长或超过最大行长度，那么每个（分组）条件可以放单独一行。逻辑运算符应该放在每行起始处。"><a href="#如果您的控制语句-if-while-的-太长或超过最大行长度，那么每个（分组）条件可以放单独一行。逻辑运算符应该放在每行起始处。" class="headerlink" title="如果您的控制语句(if, while 的)太长或超过最大行长度，那么每个（分组）条件可以放单独一行。逻辑运算符应该放在每行起始处。"></a>如果您的控制语句(if, while 的)太长或超过最大行长度，那么每个（分组）条件可以放单独一行。逻辑运算符应该放在每行起始处。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if ((foo &#x3D;&#x3D;&#x3D; 123 || bar &#x3D;&#x3D;&#x3D; &#39;abc&#39;) &amp;&amp; doesItLookGoodWhenItBecomesThatLong() &amp;&amp; isThisReallyHappening()) &#123;</span><br><span class="line"> thing1()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (foo &#x3D;&#x3D;&#x3D; 123 &amp;&amp;</span><br><span class="line">  bar &#x3D;&#x3D;&#x3D; &#39;abc&#39;) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (foo &#x3D;&#x3D;&#x3D; 123</span><br><span class="line">  &amp;&amp; bar &#x3D;&#x3D;&#x3D; &#39;abc&#39;) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (</span><br><span class="line">  foo &#x3D;&#x3D;&#x3D; 123 &amp;&amp;</span><br><span class="line">  bar &#x3D;&#x3D;&#x3D; &#39;abc&#39;</span><br><span class="line">) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (</span><br><span class="line">  foo &#x3D;&#x3D;&#x3D; 123</span><br><span class="line">  &amp;&amp; bar &#x3D;&#x3D;&#x3D; &#39;abc&#39;</span><br><span class="line">) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (</span><br><span class="line">  (foo &#x3D;&#x3D;&#x3D; 123 || bar &#x3D;&#x3D;&#x3D; &quot;abc&quot;)</span><br><span class="line">  &amp;&amp; doesItLookGoodWhenItBecomesThatLong()</span><br><span class="line">  &amp;&amp; isThisReallyHappening()</span><br><span class="line">) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (foo &#x3D;&#x3D;&#x3D; 123 &amp;&amp; bar &#x3D;&#x3D;&#x3D; &#39;abc&#39;) &#123;</span><br><span class="line">  thing1()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="注释-Comments"><a href="#注释-Comments" class="headerlink" title="注释 Comments"></a>注释 Comments</h1><h2 id="多行注释使用-…-。"><a href="#多行注释使用-…-。" class="headerlink" title="多行注释使用 / … /。"></a>多行注释使用 / … /。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* @param &#123;Grid&#125; grid 需要合并的Grid</span><br><span class="line">* @param &#123;Array&#125; cols 需要合并列的Index(序号)数组；从0开始计数，序号也包含。</span><br><span class="line">* @param &#123;Boolean&#125; isAllSome 是否2个tr的cols必须完成一样才能进行合并。true：完成一样；false(默认)：不完全一样</span><br><span class="line">* @return void</span><br><span class="line">* @author 单志永 2018&#x2F;11&#x2F;8</span><br><span class="line">*&#x2F;</span><br><span class="line">function mergeCells(grid, cols, isAllSome) &#123;</span><br><span class="line">    &#x2F;&#x2F; Do Something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="单行注释使用-。将单行注释放在需注释的语句上方。在注释之前放置一个空行，除非它位于代码块的第一行。"><a href="#单行注释使用-。将单行注释放在需注释的语句上方。在注释之前放置一个空行，除非它位于代码块的第一行。" class="headerlink" title="单行注释使用 // 。将单行注释放在需注释的语句上方。在注释之前放置一个空行，除非它位于代码块的第一行。"></a>单行注释使用 // 。将单行注释放在需注释的语句上方。在注释之前放置一个空行，除非它位于代码块的第一行。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const active &#x3D; true  &#x2F;&#x2F; is current tab</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">&#x2F;&#x2F; is current tab</span><br><span class="line">const active &#x3D; true</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function getType() &#123;</span><br><span class="line">  console.log(&#39;fetching type...&#39;)</span><br><span class="line">  &#x2F;&#x2F; set the default type to &#39;no type&#39;</span><br><span class="line">  const type &#x3D; this.type || &#39;no type&#39;</span><br><span class="line">  return type</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function getType() &#123;</span><br><span class="line">  console.log(&#39;fetching type...&#39;)</span><br><span class="line">  &#x2F;&#x2F; set the default type to &#39;no type&#39;</span><br><span class="line">  const type &#x3D; this.type || &#39;no type&#39;</span><br><span class="line">  return type</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; also good</span><br><span class="line">function getType() &#123;</span><br><span class="line">  &#x2F;&#x2F; set the default type to &#39;no type&#39;</span><br><span class="line">  const type &#x3D; this.type || &#39;no type&#39;</span><br><span class="line">  return type</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="所有注释符和注释内容用一个空格隔开，让它更容易阅读。"><a href="#所有注释符和注释内容用一个空格隔开，让它更容易阅读。" class="headerlink" title="所有注释符和注释内容用一个空格隔开，让它更容易阅读。"></a>所有注释符和注释内容用一个空格隔开，让它更容易阅读。</h2><p><code>eslint: spaced-comment</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">&#x2F;&#x2F;is current tab</span><br><span class="line">const active &#x3D; true</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">&#x2F;&#x2F; is current tab</span><br><span class="line">const active &#x3D; true</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">&#x2F;**</span><br><span class="line">*make() returns a new element</span><br><span class="line">*based on the passed-in tag name</span><br><span class="line">*&#x2F;</span><br><span class="line">function make(tag) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">return element</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">&#x2F;**</span><br><span class="line">* make() returns a new element</span><br><span class="line">* based on the passed-in tag name</span><br><span class="line">*&#x2F;</span><br><span class="line">function make(tag) &#123;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">return element</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="给注释增加-FIXME-或-TODO-的前缀，可以帮助其他开发者快速了解这个是否是一个需要重新复查的问题，或是你正在为需要解决的问题提出解决方案。这将有别于常规注释，因为它们是可操作的。使用-FIXME-–-need-to-figure-this-out-或者-TODO-–-need-to-implement。"><a href="#给注释增加-FIXME-或-TODO-的前缀，可以帮助其他开发者快速了解这个是否是一个需要重新复查的问题，或是你正在为需要解决的问题提出解决方案。这将有别于常规注释，因为它们是可操作的。使用-FIXME-–-need-to-figure-this-out-或者-TODO-–-need-to-implement。" class="headerlink" title="给注释增加 FIXME 或 TODO 的前缀，可以帮助其他开发者快速了解这个是否是一个需要重新复查的问题，或是你正在为需要解决的问题提出解决方案。这将有别于常规注释，因为它们是可操作的。使用 FIXME – need to figure this out 或者 TODO – need to implement。"></a>给注释增加 FIXME 或 TODO 的前缀，可以帮助其他开发者快速了解这个是否是一个需要重新复查的问题，或是你正在为需要解决的问题提出解决方案。这将有别于常规注释，因为它们是可操作的。使用 FIXME – need to figure this out 或者 TODO – need to implement。</h2><p>使用 // FIXME: 来标识需要修正的问题。注：如果代码中有该标识，说明标识处代码需要修正，甚至代码是错误的，不能工作，需要修复，如何修正会在说明中简略说明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lass Calculator extends Abacus &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    super()</span><br><span class="line">    &#x2F;&#x2F; FIXME: shouldn’t use a global here</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 // TODO: 来标识需要实现的问题。注：如果代码中有该标识，说明在标识处有功能代码待编写，待实现的功能在说明中会简略说明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Calculator extends Abacus &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    super()</span><br><span class="line">    &#x2F;&#x2F; TODO: total should be configurable by an options param</span><br><span class="line">    this.total &#x3D; 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="空格-Whitespace"><a href="#空格-Whitespace" class="headerlink" title="空格 Whitespace"></a>空格 Whitespace</h1><h2 id="使用-2-个空格作为缩进"><a href="#使用-2-个空格作为缩进" class="headerlink" title="使用 2 个空格作为缩进"></a>使用 2 个空格作为缩进</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function foo() &#123;</span><br><span class="line">∙∙∙∙let name</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function bar() &#123;</span><br><span class="line">∙let name</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function baz() &#123;</span><br><span class="line">∙∙let name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在大括号前放置-1-个空格。"><a href="#在大括号前放置-1-个空格。" class="headerlink" title="在大括号前放置 1 个空格。"></a>在大括号前放置 1 个空格。</h2><p><code>eslint: space-before-blocks jscs: requireSpaceBeforeBlockStatements</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function test()&#123;</span><br><span class="line">  console.log(&#39;test&#39;)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function test() &#123;</span><br><span class="line">  console.log(&#39;test&#39;)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">dog.set(&#39;attr&#39;,&#123;</span><br><span class="line">  age: &#39;1 year&#39;,</span><br><span class="line">  breed: &#39;Bernese Mountain Dog&#39;,</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">dog.set(&#39;attr&#39;, &#123;</span><br><span class="line">  age: &#39;1 year&#39;,</span><br><span class="line">  breed: &#39;Bernese Mountain Dog&#39;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="在控制语句（if、while-等）的小括号前放一个空格。在函数调用及声明中，不在函数的参数列表前加空格。"><a href="#在控制语句（if、while-等）的小括号前放一个空格。在函数调用及声明中，不在函数的参数列表前加空格。" class="headerlink" title="在控制语句（if、while 等）的小括号前放一个空格。在函数调用及声明中，不在函数的参数列表前加空格。"></a>在控制语句（if、while 等）的小括号前放一个空格。在函数调用及声明中，不在函数的参数列表前加空格。</h2><p><code>eslint: keyword-spacing jscs: requireSpaceAfterKeywords</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if(isJedi) &#123;</span><br><span class="line">  fight ()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (isJedi) &#123;</span><br><span class="line">  fight()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function fight () &#123;</span><br><span class="line">  console.log (&#39;Swooosh!&#39;)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function fight() &#123;</span><br><span class="line">  console.log(&#39;Swooosh!&#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用空格把运算符隔开。"><a href="#使用空格把运算符隔开。" class="headerlink" title="使用空格把运算符隔开。"></a>使用空格把运算符隔开。</h2><p><code>eslint: space-infix-ops jscs: requireSpaceBeforeBinaryOperators, requireSpaceAfterBinaryOperators</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const x&#x3D;y+5</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const x &#x3D; y + 5</span><br></pre></td></tr></table></figure>
+
+<h2 id="在文件末尾插入一个空行。"><a href="#在文件末尾插入一个空行。" class="headerlink" title="## 在文件末尾插入一个空行。"></a>## 在文件末尾插入一个空行。</h2><p><code>eslint: eol-last</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">import &#123; es6 &#125; from &#39;.&#x2F;AirbnbStyleGuide&#39;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">export default es6</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">import &#123; es6 &#125; from &#39;.&#x2F;AirbnbStyleGuide&#39;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">export default es6</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">import &#123; es6 &#125; from &#39;.&#x2F;AirbnbStyleGuide&#39;</span><br><span class="line">&#x2F;&#x2F; ...</span><br><span class="line">export default es6</span><br></pre></td></tr></table></figure>
+
+<h2 id="长方法链式调用时使用缩进（2个以上的方法链式调用）。使用一个点-开头，强调该行是一个方法调用，不是一个新的声明。"><a href="#长方法链式调用时使用缩进（2个以上的方法链式调用）。使用一个点-开头，强调该行是一个方法调用，不是一个新的声明。" class="headerlink" title="长方法链式调用时使用缩进（2个以上的方法链式调用）。使用一个点 . 开头，强调该行是一个方法调用，不是一个新的声明。"></a>长方法链式调用时使用缩进（2个以上的方法链式调用）。使用一个点 . 开头，强调该行是一个方法调用，不是一个新的声明。</h2><p><code>eslint: newline-per-chained-call no-whitespace-before-property</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">$(&#39;#items&#39;).find(&#39;.selected&#39;).highlight().end().find(&#39;.open&#39;).updateCount()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">$(&#39;#items&#39;).</span><br><span class="line">find(&#39;.selected&#39;).</span><br><span class="line">highlight().</span><br><span class="line">end().</span><br><span class="line">find(&#39;.open&#39;).</span><br><span class="line">updateCount()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">$(&#39;#items&#39;)</span><br><span class="line">.find(&#39;.selected&#39;)</span><br><span class="line">.highlight()</span><br><span class="line">.end()</span><br><span class="line">.find(&#39;.open&#39;)</span><br><span class="line">.updateCount()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const leds &#x3D; stage.selectAll(&#39;.led&#39;).data(data).enter().append(&#39;svg:svg&#39;).classed(&#39;led&#39;, true)</span><br><span class="line">.attr(&#39;width&#39;, (radius + margin) * 2).append(&#39;svg:g&#39;)</span><br><span class="line">.attr(&#39;transform&#39;, &#96;translate($&#123;radius + margin&#125;,$&#123;radius + margin&#125;)&#96;)</span><br><span class="line">.call(tron.led)</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const leds &#x3D; stage.selectAll(&#39;.led&#39;)</span><br><span class="line">.data(data)</span><br><span class="line">.enter().append(&#39;svg:svg&#39;)</span><br><span class="line">.classed(&#39;led&#39;, true)</span><br><span class="line">.attr(&#39;width&#39;, (radius + margin) * 2)</span><br><span class="line">.append(&#39;svg:g&#39;)</span><br><span class="line">.attr(&#39;transform&#39;, &#96;translate($&#123;radius + margin&#125;,$&#123;radius + margin&#125;)&#96;)</span><br><span class="line">.call(tron.led)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const leds &#x3D; stage.selectAll(&#39;.led&#39;).data(data)</span><br></pre></td></tr></table></figure>
+
+<h2 id="不要在圆括号内加空格。"><a href="#不要在圆括号内加空格。" class="headerlink" title="不要在圆括号内加空格。"></a>不要在圆括号内加空格。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">function bar( foo ) &#123;</span><br><span class="line">  return foo</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">function bar(foo) &#123;</span><br><span class="line">  return foo</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if ( foo ) &#123;</span><br><span class="line">  console.log(foo)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (foo) &#123;</span><br><span class="line">  console.log(foo)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="不要在中括号内添加空格。"><a href="#不要在中括号内添加空格。" class="headerlink" title="不要在中括号内添加空格。"></a>不要在中括号内添加空格。</h2><p><code>eslint: array-bracket-spacing jscs: disallowSpacesInsideArrayBrackets</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const foo &#x3D; [ 1, 2, 3 ]</span><br><span class="line">console.log(foo[ 0 ])</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const foo &#x3D; [1, 2, 3]</span><br><span class="line">console.log(foo[0])</span><br></pre></td></tr></table></figure>
+
+<h2 id="在大括号内添加空格"><a href="#在大括号内添加空格" class="headerlink" title="在大括号内添加空格"></a>在大括号内添加空格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">const foo &#x3D; &#123;clark: &#39;kent&#39;&#125;</span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">const foo &#x3D; &#123; clark: &#39;kent&#39; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>#类型转换 Type Casting &amp; Coercion</p>
+<h2 id="在声明语句的开始处就执行强制类型转换"><a href="#在声明语句的开始处就执行强制类型转换" class="headerlink" title="在声明语句的开始处就执行强制类型转换."></a>在声明语句的开始处就执行强制类型转换.</h2><h3 id="字符串："><a href="#字符串：" class="headerlink" title="字符串："></a>字符串：</h3><p><code>eslint: no-new-wrappers</code></p>
+<p>// =&gt; this.reviewScore = 9<br>// bad<br>const totalScore = new String(this.reviewScore) // typeof totalScore 是 “object” 而不是 “string”<br>// bad<br>const totalScore = this.reviewScore + ‘’ // 调用 this.reviewScore.valueOf()<br>// bad<br>const totalScore = this.reviewScore.toString() // 不能保证返回一个字符串<br>// good<br>const totalScore = String(this.reviewScore)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 数字：使用 Number 进行转换，而 parseInt 则始终以基数解析字串。</span><br><span class="line"></span><br><span class="line">&#96;eslint: radix no-new-wrappers&#96;</span><br></pre></td></tr></table></figure>
+<p>const inputValue = ‘4’<br>// bad<br>const val = new Number(inputValue)<br>// bad<br>const val = +inputValue<br>// bad<br>const val = inputValue &gt;&gt; 0<br>// bad<br>const val = parseInt(inputValue)<br>// good<br>const val = Number(inputValue)<br>// good<br>const val = parseInt(inputValue, 10)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 布尔值:</span><br><span class="line"></span><br><span class="line">&#96;eslint: no-new-wrappers&#96;</span><br></pre></td></tr></table></figure>
+<p>const age = 0<br>// bad<br>const hasAge = new Boolean(age)<br>// good<br>const hasAge = Boolean(age)<br>// best<br>const hasAge = !!age</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 命名规则 Naming Conventions</span><br><span class="line">## 避免使用单字母名称。使你的命名具有描述性。</span><br><span class="line"></span><br><span class="line">&#96;eslint: id-length&#96;</span><br></pre></td></tr></table></figure>
+<p>// bad<br>function q() {<br>// …<br>}<br>// good<br>function query() {<br>// …<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 当命名对象，函数和实例时使用驼峰式命名。</span><br><span class="line"></span><br><span class="line">&#96;eslint: camelcase jscs: requireCamelCaseOrUpperCaseIdentifiers&#96;</span><br></pre></td></tr></table></figure>
+<p>// bad<br>const OBJEcttsssss = {}<br>const this_is_my_object = {}<br>function c() {}<br>// good<br>const thisIsMyObject = {}<br>function thisIsMyFunction() {}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 当命名构造函数或类的时候使用 PascalCase 式命名，（注：即单词首字母大写）。</span><br><span class="line"></span><br><span class="line">&#96;eslint: new-cap&#96;</span><br></pre></td></tr></table></figure>
+<p>// bad<br>function user(options) {<br>  this.name = options.name<br>}<br>const bad = new user({<br>  name: ‘nope’,<br>})<br>// good<br>class User {<br>  constructor(options) {<br>    this.name = options.name<br>  }<br>}<br>const good = new User({<br>  name: ‘yup’,<br>})</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 当导出 (export) 一个默认函数时使用驼峰式命名。你的文件名应该和你的函数的名字一致。</span><br></pre></td></tr></table></figure>
+<p>function makeStyleGuide() {<br>// …<br>}<br>export default makeStyleGuide</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 当导出一个构造函数 &#x2F; 类 &#x2F; 单例 &#x2F; 函数库 &#x2F; 纯对象时使用 PascalCase 式命名。</span><br></pre></td></tr></table></figure>
+<p>const AirbnbStyleGuide = {<br>  es6: {<br>    },<br>}<br>export default AirbnbStyleGuide</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 存取器 Accessors</span><br><span class="line">属性的存取器函数不是必须的。</span><br><span class="line"></span><br><span class="line">## 別使用 JavaScript 的 getters&#x2F;setters，因为它们会导致意想不到的副作用，而且很难测试，维护和理解。相反，如果要使用存取器函数，使用 getVal() 及 setVal(‘hello’)。</span><br></pre></td></tr></table></figure>
+<p>// bad<br>class Dragon {<br>  get age() {<br>    // …<br>  }<br>  set age(value) {<br>    // …<br>  }<br>}<br>// good<br>class Dragon {<br>  getAge() {<br>    // …<br>  }<br>  setAge(value) {<br>    // …<br>  }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 如果属性&#x2F;方法是一个 boolean, 使用 isVal() 或 hasVal() 方法。</span><br></pre></td></tr></table></figure>
+<p>// bad<br>if (!dragon.age()) {<br>  return false<br>}<br>// good<br>if (!dragon.hasAge()) {<br>  return false<br>}<br>```</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/29/JavaScript%20%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="JavaScript 编程规范（一）">
+                <i class="fa fa-chevron-left"></i> JavaScript 编程规范（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Rory Zeng" />
+            
+              <p class="site-author-name" itemprop="name">Rory Zeng</p>
+              <p class="site-description motion-element" itemprop="description">记录一下码路生涯 ε=ε=ε=ε=ε=ε=┌(;￣◇￣)┘</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量-Variables"><span class="nav-number">1.</span> <span class="nav-text">变量 Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总是使用-const-或-let-来声明变量。-不这样做会导致产生全局变量。-我们希望避免污染全局命名空间。"><span class="nav-number">1.1.</span> <span class="nav-text">总是使用 const 或 let 来声明变量。 不这样做会导致产生全局变量。 我们希望避免污染全局命名空间。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将所有的-const-和-let-分组-。"><span class="nav-number">1.2.</span> <span class="nav-text">将所有的 const 和 let 分组 。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量不要链式赋值。"><span class="nav-number">1.3.</span> <span class="nav-text">变量不要链式赋值。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免使用一元递增和递减运算符-–-。"><span class="nav-number">1.4.</span> <span class="nav-text">避免使用一元递增和递减运算符(++, -–)。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比较运算符-Comparison-Operators-和-等号-Equality"><span class="nav-number">2.</span> <span class="nav-text">比较运算符 Comparison Operators 和 等号 Equality</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-和-优先于-和-。"><span class="nav-number">2.1.</span> <span class="nav-text">使用 &#x3D;&#x3D;&#x3D; 和 !&#x3D;&#x3D; 优先于 &#x3D;&#x3D; 和 !&#x3D;。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于布尔值使用简写，但对于字符串和数字使用显式比较。"><span class="nav-number">2.2.</span> <span class="nav-text">对于布尔值使用简写，但对于字符串和数字使用显式比较。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-case-和-default-子句中，使用大括号来创建包含词法声明的语句块-例如-let-const-function-和-class"><span class="nav-number">2.3.</span> <span class="nav-text">在 case 和 default 子句中，使用大括号来创建包含词法声明的语句块(例如 let, const, function, 和 class).</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元表达式不应该嵌套，通常写成单行表达式。"><span class="nav-number">2.4.</span> <span class="nav-text">三元表达式不应该嵌套，通常写成单行表达式。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免不必要的三元表达式语句。"><span class="nav-number">2.5.</span> <span class="nav-text">避免不必要的三元表达式语句。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当运算符混合在一个语句中时，请将其放在括号内。混合算术运算符时，不要将-和-与-，-，，-混合在一起。"><span class="nav-number">2.6.</span> <span class="nav-text">当运算符混合在一个语句中时，请将其放在括号内。混合算术运算符时，不要将 * 和 % 与 + ， -，，&#x2F; 混合在一起。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码块-Blocks"><span class="nav-number">3.</span> <span class="nav-text">代码块 Blocks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用大括号包裹所有的多行代码块"><span class="nav-number">3.1.</span> <span class="nav-text">使用大括号包裹所有的多行代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果通过-if-和-else-使用多行代码块，把-else-放在-if-代码块闭合括号的同一行。"><span class="nav-number">3.2.</span> <span class="nav-text">如果通过 if 和 else 使用多行代码块，把 else 放在 if 代码块闭合括号的同一行。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果一个-if-块总是执行一个-return-语句，后面的-else-块是不必要的。在-else-if-块中的-return，可以分成多个-if-块来-return-。"><span class="nav-number">3.3.</span> <span class="nav-text">如果一个 if 块总是执行一个 return 语句，后面的 else 块是不必要的。在 else if 块中的 return，可以分成多个 if 块来 return 。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制语句-Control-Statements"><span class="nav-number">4.</span> <span class="nav-text">控制语句 Control Statements</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如果您的控制语句-if-while-的-太长或超过最大行长度，那么每个（分组）条件可以放单独一行。逻辑运算符应该放在每行起始处。"><span class="nav-number">4.1.</span> <span class="nav-text">如果您的控制语句(if, while 的)太长或超过最大行长度，那么每个（分组）条件可以放单独一行。逻辑运算符应该放在每行起始处。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注释-Comments"><span class="nav-number">5.</span> <span class="nav-text">注释 Comments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多行注释使用-…-。"><span class="nav-number">5.1.</span> <span class="nav-text">多行注释使用 &#x2F; … &#x2F;。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单行注释使用-。将单行注释放在需注释的语句上方。在注释之前放置一个空行，除非它位于代码块的第一行。"><span class="nav-number">5.2.</span> <span class="nav-text">单行注释使用 &#x2F;&#x2F; 。将单行注释放在需注释的语句上方。在注释之前放置一个空行，除非它位于代码块的第一行。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有注释符和注释内容用一个空格隔开，让它更容易阅读。"><span class="nav-number">5.3.</span> <span class="nav-text">所有注释符和注释内容用一个空格隔开，让它更容易阅读。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给注释增加-FIXME-或-TODO-的前缀，可以帮助其他开发者快速了解这个是否是一个需要重新复查的问题，或是你正在为需要解决的问题提出解决方案。这将有别于常规注释，因为它们是可操作的。使用-FIXME-–-need-to-figure-this-out-或者-TODO-–-need-to-implement。"><span class="nav-number">5.4.</span> <span class="nav-text">给注释增加 FIXME 或 TODO 的前缀，可以帮助其他开发者快速了解这个是否是一个需要重新复查的问题，或是你正在为需要解决的问题提出解决方案。这将有别于常规注释，因为它们是可操作的。使用 FIXME – need to figure this out 或者 TODO – need to implement。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#空格-Whitespace"><span class="nav-number">6.</span> <span class="nav-text">空格 Whitespace</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-2-个空格作为缩进"><span class="nav-number">6.1.</span> <span class="nav-text">使用 2 个空格作为缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在大括号前放置-1-个空格。"><span class="nav-number">6.2.</span> <span class="nav-text">在大括号前放置 1 个空格。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在控制语句（if、while-等）的小括号前放一个空格。在函数调用及声明中，不在函数的参数列表前加空格。"><span class="nav-number">6.3.</span> <span class="nav-text">在控制语句（if、while 等）的小括号前放一个空格。在函数调用及声明中，不在函数的参数列表前加空格。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用空格把运算符隔开。"><span class="nav-number">6.4.</span> <span class="nav-text">使用空格把运算符隔开。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在文件末尾插入一个空行。"><span class="nav-number">6.5.</span> <span class="nav-text">## 在文件末尾插入一个空行。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长方法链式调用时使用缩进（2个以上的方法链式调用）。使用一个点-开头，强调该行是一个方法调用，不是一个新的声明。"><span class="nav-number">6.6.</span> <span class="nav-text">长方法链式调用时使用缩进（2个以上的方法链式调用）。使用一个点 . 开头，强调该行是一个方法调用，不是一个新的声明。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要在圆括号内加空格。"><span class="nav-number">6.7.</span> <span class="nav-text">不要在圆括号内加空格。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要在中括号内添加空格。"><span class="nav-number">6.8.</span> <span class="nav-text">不要在中括号内添加空格。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在大括号内添加空格"><span class="nav-number">6.9.</span> <span class="nav-text">在大括号内添加空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在声明语句的开始处就执行强制类型转换"><span class="nav-number">6.10.</span> <span class="nav-text">在声明语句的开始处就执行强制类型转换.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串："><span class="nav-number">6.10.1.</span> <span class="nav-text">字符串：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rory Zeng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
